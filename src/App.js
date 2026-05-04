@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import ProductListPage from "./pages/ProductListPage";
+import CartPage from "./pages/CartPage";
+import CheckoutPage from "./pages/CheckoutPage";
 
-function App() {
+export default function App() {
+  const [cartCount, setCartCount] = useState(0);
+
+  const updateCartCount = () => setCartCount((prev) => prev + 1);
+  const resetCartCount = () => setCartCount(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen bg-gray-100">
+        <Navbar cartCount={cartCount} />
+        <Routes>
+          <Route
+            path="/"
+            element={<ProductListPage onCartUpdate={updateCartCount} />}
+          />
+          <Route path="/cart" element={<CartPage />} />
+          <Route
+            path="/checkout"
+            element={<CheckoutPage onCartUpdate={resetCartCount} />}
+          />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
-
-export default App;
