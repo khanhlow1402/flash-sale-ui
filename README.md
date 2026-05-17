@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+Lam chung voi: Nguyễn Hồ Việt Khoa - 22683901 Nguyễn Thanh Tú - 22691321 Trần Phương Trí - 22637261
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
